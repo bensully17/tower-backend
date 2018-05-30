@@ -20,7 +20,9 @@
   "homepage": "https://github.com/bensully17/tower-backend#readme",
   "dependencies": {
     "cors": "^2.8.4",
+    "dotenv": "^5.0.1",
     "express": "^4.16.3",
+    "heroku": "^7.0.70",
     "knex": "^0.14.6",
     "pg": "^7.4.3"
   },
