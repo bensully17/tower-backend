@@ -1,14 +1,16 @@
-const createError = require('http-errors');
-const express = require('express');
-const path = require('path');
-const cookieParser = require('cookie-parser');
+const createError = require('http-errors')
+const express = require('express')
+const path = require('path')
+const cookieParser = require('cookie-parser')
 const logger = require('morgan');
 const bodyParser = require('body-parser')
+const cors = require('cors')
 
-const app = express();
+const app = express()
 
 const userAppts = require('./api/userAppts')
 
+app.use(cors())
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
