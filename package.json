@@ -4,8 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js"
+    "start": "node ./bin/www",
+    "dev": "nodemon"
   },
   "repository": {
     "type": "git",
@@ -19,11 +19,15 @@
   },
   "homepage": "https://github.com/bensully17/tower-backend#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.3",
     "cors": "^2.8.4",
+    "debug": "^3.1.0",
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
     "heroku": "^7.0.70",
     "knex": "^0.14.6",
+    "morgan": "^1.9.0",
     "pg": "^7.4.3"
   },
   "devDependencies": {

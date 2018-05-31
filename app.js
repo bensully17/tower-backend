@@ -1,11 +1,33 @@
-const express = require('express')
-const app = express()
-const cors = require('cors')
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const bodyParser = require('body-parser')
 
-app.use(cors())
+const app = express();
 
-app.get('/', (req, res) => {
-    res.send('Hello World 🖕')
-})
+const userAppts = require('./api/userAppts')
 
-app.listen(process.env.PORT || 5000, () => console.log('listening on port 5000'))
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+
+app.use('/userAppts', userAppts)
+
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  next(createError(404));
+});
+
+// error handler
+app.use(function(err, req, res, next) {  
+  res.status(err.status || 500);
+  res.json({
+    message: err.message,
+    error: req.app.get('env') === 'development' ? err : {}
+  });
+});
+
+module.exports = app;
